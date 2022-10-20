@@ -145,15 +145,15 @@ public class Tests
         };
         var answerNone1 = new Table
         {
-            new Card(Suit.Clubs, Rank.Ace),
-            new Card(Suit.Hearts, Rank.Ace),
+            new(Suit.Clubs, Rank.Ace),
+            new(Suit.Hearts, Rank.Ace),
         };
         var answerNone2 = new Table
         {
-            new Card(Suit.Clubs, Rank.Ace),
-            new Card(Suit.Hearts, Rank.Ace),
-            new Card(Suit.Diamonds, Rank.Queen),
-            new Card(Suit.Hearts, Rank.Queen),
+            new(Suit.Clubs, Rank.Ace),
+            new(Suit.Hearts, Rank.Ace),
+            new(Suit.Diamonds, Rank.Queen),
+            new(Suit.Hearts, Rank.Queen),
         };
         That(Round(handsFirst1), Is.EqualTo(new Tuple<Player, Table>(Player.First, answerFirst1)));
         That(Round(handsFirst2), Is.EqualTo(new Tuple<Player, Table>(Player.First, answerFirst2)));

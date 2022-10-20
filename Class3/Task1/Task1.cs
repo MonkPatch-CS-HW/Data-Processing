@@ -132,22 +132,18 @@ namespace Task1
             };
 
             var winner = RoundWinner(card1, card2);
-            if (winner == null)
+            if (winner != null) return new Tuple<Player, Table>((Player)winner!, table);
+            try
             {
-                try
-                {
-                    var (player, newTable) = Round(hands);
-                    table.AddRange(newTable);
-                    return new Tuple<Player, Table>(player, table);
-                }
-                catch (NoCardsException ex)
-                {
-                    table.AddRange(ex.Table);
-                    throw new NoCardsException(table);
-                }
+                var (player, newTable) = Round(hands);
+                table.AddRange(newTable);
+                return new Tuple<Player, Table>(player, table);
             }
-
-            return new Tuple<Player, Table>((Player)winner!, table);
+            catch (NoCardsException ex)
+            {
+                table.AddRange(ex.Table);
+                throw new NoCardsException(table);
+            }
         }
 
 // Полный цикл игры (возвращается победивший игрок)
